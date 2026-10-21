@@ -1,3 +1,20 @@
+<?php
+    include("config/db.php");
+
+    if( isset($_POST['save'])  ){
+    $name = $_POST['nameField'];
+    $email = $_POST['emailField'];
+
+    $insert_query = "INSERT INTO users(user_name, user_email) VALUES('$name', '$email')";
+    $execute = mysqli_query($conn, $insert_query);
+}
+else {
+    echo "Form not submitted";
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +24,9 @@
 </head>
 <body>
     
-    <form action="logics.php" method="get">
+    <form method="POST">
         <input type="text" name="nameField">
-        <input type="text" name="messageField">
+        <input type="text" name="emailField">
 
         <button name="save">SAVE</button>
     </form>
