@@ -9,6 +9,16 @@
         $select_query = "SELECT * FROM products";
         $result = mysqli_query($conn, $select_query);
     }
+
+    if(isset($_GET['delete'])){
+        $delete_query = "DELETE FROM products WHERE product_id = '$_GET[delete]'";
+        $result = mysqli_query($conn, $delete_query);
+
+        echo "<script>
+            alert('Product Deleted Successfully');
+            location.assign('read.php');
+        </script>";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,8 +52,8 @@
             <td> <?php echo $display['product_name']  ?>   </td>
             <td>  <?php echo $display['product_price']  ?>  </td>
             <td>
-                <a href="update.php?id=<?php echo $display['product_id'];?>">Edit</a>
-                <a href="">Delete</a>
+                <a href="update.php?update=<?php echo $display['product_id'];?>">Edit</a>
+                <a href="?delete=<?php echo $display['product_id'];?>">Delete</a>
             </td>
         </tr>
 

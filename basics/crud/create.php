@@ -10,6 +10,8 @@
         $insert_query = "INSERT INTO products(product_name, product_price, product_created_at) VALUES('$productName', $productPrice, '$productCreatedAt')";
 
         $result = mysqli_query($conn, $insert_query);
+
+        header("location: read.php");
     }
 ?>
 
